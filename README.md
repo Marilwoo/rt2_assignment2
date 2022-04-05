@@ -9,11 +9,11 @@ catkin_make
 ```
 For running the simulation the user needs to open two terminals, both sourced with ROS. In the first one the simulation will be run, as well as all the nodes but this one. Run:
 ```
-roslaunch rt2_assignment1 sim.launch
+roslaunch rt2_assignment2 sim.launch
 ```
 In the second terminal, move in the folder
 ```
-ros_ws/src/rt2_assignment1/notebook
+ros_ws/src/rt2_assignment2/notebook
 ```
 Here run:
 ```
