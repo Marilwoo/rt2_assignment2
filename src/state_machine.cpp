@@ -1,3 +1,42 @@
+/**
+* \file state_machine.cpp
+* \brief This file contains a state machine to start or stop the random beahvior of the robot
+* \author Maria Luisa Aiachini
+*
+* \details
+*
+* Services: <BR>
+* 	°/user_interface
+*
+* Clients: <BR>
+*	°/position_server
+*
+* Action Client: <BR>
+*	°/go_to_point
+*
+* Publishes to: <BR>
+*	°/reached
+*	°/duration
+*
+* Description:
+*
+* This node is used for starting or stopping the robot random behavior.
+* It receives a request from the /user_interface with a command: 'start' or 'stop'.
+* If the robot needs to start, the node sends a request to the /position_server with
+* the min and the max values to obtain a position that will be reached.
+* When the node receives a response it sends the target position to the /go_to_point server
+* that will make the robot move; at the same time a timer is started to compute the total
+* time needed to reach the goal.
+* Once the robot reaches the goal, this information is published on the topic /reached 
+* and the time needed is computed and published on the topic /duration.
+* Finally, if the node has not received a 'stop' command from the /user_interface, another
+* target is computed and the behavior will start again.
+* If the node receives a 'stop' command at any time, the goal is cancelled and the robot
+* is stopped immediately.
+*
+*/
+
+
 #include "ros/ros.h"
 #include "rt2_assignment1/Command.h"
 #include "rt2_assignment1/RandomPosition.h"
@@ -16,7 +55,16 @@ ros::Time start_timer;
 ros::Time stop_timer;
 std_msgs::Duration tempo;
 
-// Assigning the response from the user interface to a variable
+/**
+* \brief
+*
+* \param
+* \param
+*
+* \return
+*
+*
+*/
 bool user_interface(rt2_assignment1::Command::Request &req, rt2_assignment1::Command::Response &res){
     if (req.command == "start"){
     	start = true;
@@ -27,7 +75,16 @@ bool user_interface(rt2_assignment1::Command::Request &req, rt2_assignment1::Com
     return true;
 }
 
-
+/**
+* \brief
+*
+* \param
+* \param
+*
+* \return
+*
+*
+*/
 int main(int argc, char **argv)
 {
    ros::init(argc, argv, "state_machine");
