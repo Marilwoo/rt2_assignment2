@@ -1,0 +1,11 @@
+<map id="src/state_machine.cpp" name="src/state_machine.cpp">
+<area shape="rect" id="node1" title="This file contains a state machine to start or stop the random beahvior of the robot." alt="" coords="738,5,906,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,87,84,114"/>
+<area shape="rect" id="node3" title=" " alt="" coords="108,87,323,114"/>
+<area shape="rect" id="node4" title=" " alt="" coords="347,87,601,114"/>
+<area shape="rect" id="node5" title=" " alt="" coords="625,80,816,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="840,80,1007,121"/>
+<area shape="rect" id="node7" title=" " alt="" coords="1031,87,1160,114"/>
+<area shape="rect" id="node8" title=" " alt="" coords="1184,87,1316,114"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1340,87,1496,114"/>
+</map>

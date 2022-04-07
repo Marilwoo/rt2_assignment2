@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Research<sp/>Track<sp/>2<sp/>-<sp/>Second<sp/>Assignment</highlight></codeline>
+<codeline><highlight class="normal">#####<sp/>Maria<sp/>Luisa<sp/>Aiachini<sp/>-<sp/>4375373</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>How<sp/>to<sp/>run</highlight></codeline>
+<codeline><highlight class="normal">At<sp/>first<sp/>you<sp/>need<sp/>to<sp/>clone<sp/>[this<sp/>repository](https://github.com/Marilwoo/rt2_assignment2)<sp/>in<sp/>a<sp/>ros<sp/>workspace.<sp/>Build<sp/>the<sp/>package<sp/>in<sp/>a<sp/>ros1<sp/>sourced<sp/>terminal<sp/>running</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">catkin_make</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>running<sp/>the<sp/>simulation<sp/>the<sp/>user<sp/>needs<sp/>to<sp/>open<sp/>two<sp/>terminals,<sp/>both<sp/>sourced<sp/>with<sp/>ROS.<sp/>In<sp/>the<sp/>first<sp/>one<sp/>the<sp/>simulation<sp/>will<sp/>be<sp/>run,<sp/>as<sp/>well<sp/>as<sp/>all<sp/>the<sp/>nodes<sp/>but<sp/>this<sp/>one.<sp/>Run:</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>rt2_assignment2<sp/>sim.launch</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">In<sp/>the<sp/>second<sp/>terminal,<sp/>move<sp/>in<sp/>the<sp/>folder</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">ros_ws/src/rt2_assignment2/notebook</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Here<sp/>run:</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">jupyter<sp/>notebook<sp/>--allow-root</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Once<sp/>the<sp/>jupyter<sp/>is<sp/>opened<sp/>go<sp/>in<sp/>the<sp/>file<sp/>user_interface.ipynb<sp/>and<sp/>run<sp/>every<sp/>node.<sp/>At<sp/>this<sp/>point<sp/>everything<sp/>is<sp/>running<sp/>and<sp/>the<sp/>user<sp/>is<sp/>able<sp/>to<sp/>decide<sp/>how<sp/>to<sp/>interact<sp/>with<sp/>the<sp/>robot.</highlight></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>
