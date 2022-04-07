@@ -1,5 +1,24 @@
-#! /usr/bin/env python
+##
+# \file go_to_point.py
+# \brief Node for making the robot move toward the goal
+# \author Maria Luisa Aiachini
+# 
+# \details
+#
+# \Publishes to: <BR>
+#	°/cmd_vel
+#
+# \Subscribes to:<BR>
+#	°/odom
+#
+# \Action Client: <BR>
+#	°/go_to_point
+#
+# Description:
+# This node implements a state machine to make the robot reach the goal position.
+#
 
+#! /usr/bin/env python
 
 import rospy
 from geometry_msgs.msg import Twist, Point
@@ -29,8 +48,15 @@ ub_a = 0.6
 lb_a = -0.5
 ub_d = 0.6
 
+##
+# \brief Callback for the /odom subscriber
+#
+# \param msg: Message containind the data about the odometry of the robot
+#
 # Callback for odometry subscriber it takes current position and
 # orientation of the robot
+#
+
 def clbk_odom(msg):
     global position_
     global yaw_
@@ -47,19 +73,34 @@ def clbk_odom(msg):
     euler = transformations.euler_from_quaternion(quaternion)
     yaw_ = euler[2]
 
-# Changing the state by assigning to the global variable state_
+##
+# \brief Changing the state by assigning to the global variable state_
+#
+# \param state: State that needs to be assigned to the variable 'state_'
+#
+
 def change_state(state):
     global state_
     state_ = state
     print ('State changed to [%s]' % state_)
 
-# Normalizing the angle 
+##
+# \brief Normalizing the angle 
+#
+# \param angle: Angle to be normalized
+#
+
 def normalize_angle(angle):
     if(math.fabs(angle) > math.pi):
         angle = angle - (2 * math.pi * angle) / (math.fabs(angle))
     return angle
 
-# Fixing the yaw of the robot
+##
+# \brief Fixing the yaw to make the robot oriented toward the goal
+# 
+# \param des_pos: Goal position
+#
+
 def fix_yaw(des_pos):
     desired_yaw = math.atan2(des_pos.y - position_.y, des_pos.x - position_.x)
     err_yaw = normalize_angle(desired_yaw - yaw_)
@@ -76,6 +117,11 @@ def fix_yaw(des_pos):
     if math.fabs(err_yaw) <= yaw_precision_2_:
         change_state(1)
 
+##
+# \brief Making the robot going straight to reach the robot
+#
+# \param des_pos: Goal position
+#
 
 def go_straight_ahead(des_pos):
     desired_yaw = math.atan2(des_pos.y - position_.y, des_pos.x - position_.x)
@@ -99,6 +145,11 @@ def go_straight_ahead(des_pos):
     # state change conditions
     if math.fabs(err_yaw) > yaw_precision_:
         change_state(0)
+##
+# \brief Fixing the yaw at the robot once the goal is reached to match the needed orientation
+#
+# \param des_yaw: Goal orientation of the robot
+#
 
 def fix_final_yaw(des_yaw):
     err_yaw = normalize_angle(des_yaw - yaw_)
@@ -114,7 +165,10 @@ def fix_final_yaw(des_yaw):
     # state change conditions
     if math.fabs(err_yaw) <= yaw_precision_2_:
         change_state(3)
-        
+##
+# \brief Stopping the robot once the target position and orientation are reached
+#
+      
 def done():
     twist_msg = Twist()
     twist_msg.linear.x = 0
@@ -123,7 +177,14 @@ def done():
     success = True
     act_s.set_succeeded()
 
-# Callback for the action server
+##
+# \brief Callback for the action server
+#
+# \param goal: Goal position
+#
+# \return Always true
+#
+
 def go_to_point(goal):
 	global state_, desired_position_, act_s, success
 	print("received")
@@ -161,6 +222,13 @@ def go_to_point(goal):
 			done()
 			break
 	return True
+
+##
+# \brief Main function of the node
+#
+# In this function the node is initiated and are defined all the publishers, subscribers
+# and action clients.
+#
 
 def main():
 	global pub_, act_s
